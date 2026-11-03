@@ -1,0 +1,99 @@
+{
+  "_dev_note": "DEVELOPMENT FIXTURE ONLY — NEVER PRESENTED IN PRODUCTION BUILDS",
+  "isMock": true,
+  "version": "1.0-mock",
+  "generatedAt": "2026-11-03T00:00:00Z",
+  "github": {
+    "username": "mock-developer",
+    "status": "active",
+    "lastSynced": "2026-11-03T00:00:00Z",
+    "totalContributions": 320,
+    "publicRepos": 15,
+    "totalStars": 8,
+    "totalForks": 3,
+    "contributionCalendar": [
+      { "date": "2026-11-01", "count": 2, "level": 1 },
+      { "date": "2026-11-02", "count": 5, "level": 3 }
+    ]
+  },
+  "competitive": {
+    "combinedHeatmap": [
+      {
+        "date": "2026-11-01",
+        "total": 3,
+        "breakdown": {
+          "leetcode": 2,
+          "codeforces": 1,
+          "atcoder": 0,
+          "codechef": 0
+        }
+      },
+      {
+        "date": "2026-11-02",
+        "total": 4,
+        "breakdown": {
+          "leetcode": 2,
+          "codeforces": 0,
+          "atcoder": 2,
+          "codechef": 0
+        }
+      }
+    ],
+    "platforms": {
+      "leetcode": {
+        "username": "mock-developer",
+        "status": "active",
+        "lastSynced": "2026-11-03T00:00:00Z",
+        "totalSolved": 150,
+        "easy": 80,
+        "easyTotal": 975,
+        "medium": 60,
+        "mediumTotal": 2138,
+        "hard": 10,
+        "hardTotal": 987,
+        "contestRating": 1500.0,
+        "globalRanking": 110000,
+        "topPercentage": 29.5,
+        "streak": 15,
+        "activeDays": 75,
+        "ratingHistory": [
+          { "contestName": "Mock Contest 1", "rating": 1480.0, "rank": 5000, "date": "2026-10-15" },
+          { "contestName": "Mock Contest 2", "rating": 1500.0, "rank": 4200, "date": "2026-10-22" }
+        ],
+        "badges": ["Knight Mock"]
+      },
+      "codeforces": {
+        "handle": "mock-developer",
+        "status": "active",
+        "lastSynced": "2026-11-03T00:00:00Z",
+        "rating": 1200,
+        "maxRating": 1250,
+        "rank": "pupil",
+        "maxRank": "pupil",
+        "contestsCount": 5,
+        "ratingHistory": [
+          { "contestName": "Mock Round 1", "rating": 1150, "rank": 3000, "date": "2026-10-01" },
+          { "contestName": "Mock Round 2", "rating": 1200, "rank": 2500, "date": "2026-10-15" }
+        ]
+      },
+      "atcoder": {
+        "username": "mock-developer",
+        "status": "active",
+        "lastSynced": "2026-11-03T00:00:00Z",
+        "rating": 600,
+        "highestRating": 650,
+        "contestsCount": 3,
+        "ratingHistory": []
+      },
+      "codechef": {
+        "username": "mock-developer",
+        "status": "active",
+        "lastSynced": "2026-11-03T00:00:00Z",
+        "rating": 1400,
+        "highestRating": 1450,
+        "stars": "2★",
+        "solvedCount": 50
+      }
+    }
+  }
+}

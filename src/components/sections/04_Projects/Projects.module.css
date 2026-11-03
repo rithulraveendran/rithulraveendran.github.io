@@ -1,0 +1,338 @@
+.section {
+  position: relative;
+  border-top: 1px solid var(--color-border-hairline);
+  background-color: var(--color-bg-base);
+  overflow: hidden;
+}
+
+.pinnedWrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.headerContainer {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-6) var(--space-2);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-2);
+}
+
+.headerRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: clamp(1.75rem, 2.5vw, var(--font-size-2xl));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  max-width: var(--max-width-reading);
+}
+
+.scrollHint {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+
+/* Subtle Progress Indicator */
+.progressBarTrack {
+  position: relative;
+  max-width: var(--max-width-wide);
+  width: 100%;
+  height: 2px;
+  margin: var(--space-2) auto var(--space-4);
+  background-color: var(--color-border-hairline);
+  padding: 0 var(--space-6);
+  box-sizing: border-box;
+}
+
+.progressBarFill {
+  height: 100%;
+  width: 100%;
+  background-color: var(--color-text-primary);
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* Horizontal Track (Desktop) */
+.trackViewport {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: var(--space-4);
+  display: flex;
+  align-items: center;
+}
+
+.track {
+  display: flex;
+  gap: var(--space-8);
+  padding-left: max(var(--space-6), calc((100vw - var(--max-width-wide)) / 2));
+  padding-right: var(--space-16);
+  width: max-content;
+  will-change: transform;
+}
+
+/* Individual Project Card / Stage */
+.projectPanel {
+  width: min(780px, 82vw);
+  max-height: calc(100vh - 180px);
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-hairline);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+  transition: border-color var(--transition-fast);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.projectPanel:hover {
+  border-color: var(--color-border-subtle);
+}
+
+.panelTop {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryTag {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-2);
+}
+
+.projectTitle {
+  font-family: var(--font-sans);
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.projectTagline {
+  font-size: 1.1rem;
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-3);
+  font-weight: var(--font-weight-medium);
+}
+
+.projectDescription {
+  font-size: 1.0625rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  margin-bottom: var(--space-4);
+}
+
+/* Architecture Flow Rail */
+.flowRail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2-5) var(--space-4);
+  background-color: var(--color-bg-surface-elevated);
+  border: 1px solid var(--color-border-hairline);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+.flowStep {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.flowArrow {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+/* Tech Spec Table (No Pills) */
+.specList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+  border-top: 1px solid var(--color-border-hairline);
+  padding-top: var(--space-3);
+  margin-top: auto;
+}
+
+.specRow {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: var(--space-2);
+  font-size: 1.0625rem;
+}
+
+.specLabel {
+  font-family: var(--font-mono);
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.specValue {
+  color: var(--color-text-primary);
+  opacity: 0.95;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+/* Visual Media Container */
+.visualFrame {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: var(--color-bg-surface-elevated);
+  border: 1px solid var(--color-border-hairline);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visualImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Action Links */
+.panelActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: var(--space-2);
+}
+
+.linkPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  transition: opacity var(--transition-fast);
+}
+
+.linkPrimary:hover {
+  opacity: 0.8;
+}
+
+.linkSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.linkSecondary:hover {
+  color: var(--color-text-primary);
+}
+
+/* Final GitHub Panel */
+.panelFinale {
+  width: min(400px, 75vw);
+  max-height: calc(100vh - 180px);
+  background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.04) 0%, transparent 70%), var(--color-bg-surface);
+  border: 1px solid var(--color-border-hairline);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-shrink: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.finaleEyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.finaleTitle {
+  font-family: var(--font-sans);
+  font-size: 2rem;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-snug);
+}
+
+.finaleDesc {
+  font-size: 1.0625rem;
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.finaleButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-text-primary);
+  color: var(--color-text-inverse);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-pill);
+  transition: opacity var(--transition-fast);
+}
+
+.finaleButton:hover {
+  opacity: 0.9;
+}

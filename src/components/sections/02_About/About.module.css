@@ -1,0 +1,227 @@
+.section {
+  position: relative;
+  padding: var(--space-24) var(--space-6);
+  border-top: 1px solid var(--color-border-hairline);
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+/* Left Column: Narrative Content */
+.contentCol {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.lead {
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-6);
+  font-weight: var(--font-weight-medium);
+}
+
+.narrative {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-10);
+}
+
+.paragraph {
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+  opacity: 0.92;
+  line-height: 1.75;
+}
+
+/* Structured Facts Table */
+.factsTable {
+  margin-top: var(--space-8);
+  border-top: 1px solid var(--color-border-hairline);
+  display: flex;
+  flex-direction: column;
+}
+
+.factRow {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border-hairline);
+  font-size: var(--font-size-sm);
+}
+
+.factLabel {
+  font-family: var(--font-mono);
+  color: var(--color-text-tertiary);
+}
+
+.factValue {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Right Column: Sticky Photo Stage */
+.photoCol {
+  position: sticky;
+  top: calc(4rem + var(--space-8));
+  height: min(600px, 75vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.photoFrame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-hairline);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.photoSlide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: scale(0.98);
+}
+
+.photoSlideActive {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.photoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.captionBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-4) var(--space-5);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.captionText {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.controlsRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-shrink: 0;
+}
+
+.dotsGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.dotButton {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 255, 255, 0.35);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: width var(--transition-fast), background-color var(--transition-fast);
+}
+
+.dotButton:hover {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.dotButtonActive {
+  width: 18px;
+  background-color: var(--color-text-primary);
+}
+
+.indicator {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Graceful Fallback When Personal Photographs Are Pending Upload */
+.placeholderFrame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8);
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 70%), var(--color-bg-surface);
+}
+
+.placeholderIcon {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-4);
+  color: var(--color-text-tertiary);
+  opacity: 0.6;
+}
+
+.placeholderTitle {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.placeholderSubtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  max-width: 18rem;
+}

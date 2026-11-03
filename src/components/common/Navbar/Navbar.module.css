@@ -1,0 +1,192 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem; /* 64px */
+  z-index: var(--z-nav);
+  background-color: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--color-border-hairline);
+  transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.inner {
+  max-width: var(--max-width-wide);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  transition: opacity var(--transition-fast);
+}
+
+.brand:hover {
+  opacity: 0.8;
+}
+
+.brandDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-status-success);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.link {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  position: relative;
+  transition: color var(--transition-fast);
+  padding: var(--space-2) 0;
+}
+
+.link:hover {
+  color: var(--color-text-primary);
+}
+
+.linkActive {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.linkActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--color-text-primary);
+}
+
+.resumeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-surface-elevated);
+  border: 1px solid var(--color-border-hairline);
+  border-radius: var(--radius-pill);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.resumeButton:hover {
+  background-color: var(--color-bg-surface-hover);
+  border-color: var(--color-border-subtle);
+}
+
+/* Mobile Toggle Button */
+.mobileToggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-text-primary);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.mobileToggle:hover {
+  background-color: var(--color-bg-surface-elevated);
+}
+
+/* Mobile Drawer Overlay */
+.mobileDrawer {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: var(--z-nav);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8) var(--space-6);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.mobileDrawerOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.mobileLink {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.mobileLink:hover,
+.mobileLinkActive {
+  color: var(--color-text-primary);
+}
+
+.mobileResumeButton {
+  align-self: flex-start;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-surface-elevated);
+  border: 1px solid var(--color-border-hairline);
+  border-radius: var(--radius-pill);
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 860px) {
+  .navLinks {
+    display: none;
+  }
+
+  .resumeButton {
+    display: none;
+  }
+
+  .mobileToggle {
+    display: flex;
+  }
+}

@@ -1,0 +1,56 @@
+name: Update Telemetry Statistics
+
+on:
+  schedule:
+    # Run hourly at minute 0 (best-effort scheduling)
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allows manual on-demand execution from Actions tab
+
+concurrency:
+  group: update-telemetry
+  cancel-in-progress: true
+
+jobs:
+  collect-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to commit updated stats.json
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'scripts/requirements.txt'
+
+      - name: Install Python Dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run Telemetry Collector Pipeline
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USER: "rithulraveendran"
+          LEETCODE_USER: "rithulraveendran"
+          CODEFORCES_USER: "rithulraveendran"
+          ATCODER_USER: "rithulraveendran"
+          CODECHEF_USER: "rithulr86"
+        run: python scripts/collect_stats.py
+
+      - name: Check for Telemetry Changes
+        id: git-diff
+        run: |
+          git diff --quiet src/data/stats.json || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and Push Updated Telemetry
+        if: steps.git-diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/stats.json
+          git commit -m "chore(telemetry): update platform stats [skip ci]"
+          git push

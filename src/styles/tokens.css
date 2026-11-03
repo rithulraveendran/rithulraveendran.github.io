@@ -1,0 +1,155 @@
+/**
+ * Global Design Tokens — Apple-Inspired Restraint
+ * Source of Truth: portfolio-revamp-plan.md
+ */
+
+:root,
+[data-theme='light'] {
+  /* Default Light Mode (Apple Clean Light Canvas) */
+  --color-bg-base: #f5f5f7;
+  --color-bg-surface: #ffffff;
+  --color-bg-surface-elevated: #f0f0f3;
+  --color-bg-surface-hover: #e5e5ea;
+
+  /* Typography Colors */
+  --color-text-primary: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-text-tertiary: #86868b;
+  --color-text-inverse: #ffffff;
+
+  /* Border & Divider Colors */
+  --color-border-hairline: rgba(0, 0, 0, 0.08);
+  --color-border-subtle: rgba(0, 0, 0, 0.12);
+  --color-border-hover: rgba(0, 0, 0, 0.22);
+
+  /* Shadows */
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --card-shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.04);
+
+  /* Heatmap */
+  --heatmap-empty: #ebedf0;
+  --heatmap-1: #9be9a8;
+  --heatmap-2: #40c463;
+  --heatmap-3: #30a14e;
+  --heatmap-4: #216e39;
+
+  /* Functional Status */
+  --color-status-success: #28a745;
+  --color-status-warning: #c28e00;
+  --color-status-error: #d73a49;
+  --color-status-info: #0066cc;
+
+  /* Typography Families */
+  --font-sans: 'Geist', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Geist Mono', SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-md: 1.125rem;    /* 18px */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-xl: 1.5rem;      /* 24px */
+  --font-size-2xl: 2rem;       /* 32px */
+  --font-size-3xl: 2.75rem;    /* 44px */
+  --font-size-4xl: 3.5rem;     /* 56px */
+  --font-size-display: 4.5rem; /* 72px */
+
+  /* Line Heights */
+  --line-height-tight: 1.08;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.022em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.04em;
+
+  /* Spacing Scale (4px baseline) */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
+  --space-32: 8rem;    /* 128px */
+
+  /* Layout Widths */
+  --max-width-content: 72rem;   /* 1152px */
+  --max-width-reading: 44rem;   /* 704px */
+  --max-width-wide: 84rem;      /* 1344px */
+  --max-width-screen: 100rem;   /* 1600px */
+
+  /* Border Radii */
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Transition Durations & Easings */
+  --transition-fast: 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Z-Index Hierarchy */
+  --z-base: 0;
+  --z-elevated: 10;
+  --z-sticky: 50;
+  --z-nav: 100;
+  --z-modal-backdrop: 200;
+  --z-modal-content: 210;
+  --z-tooltip: 300;
+}
+
+/* Dark Mode Overrides (Apple Pure Black Canvas) */
+[data-theme='dark'] {
+  /* Surface & Background Colors */
+  --color-bg-base: #000000;
+  --color-bg-surface: #0a0a0c;
+  --color-bg-surface-elevated: #121214;
+  --color-bg-surface-hover: #18181b;
+
+  /* Typography Colors */
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #86868b;
+  --color-text-tertiary: #6e6e73;
+  --color-text-inverse: #000000;
+
+  /* Border & Divider Colors */
+  --color-border-hairline: rgba(255, 255, 255, 0.08);
+  --color-border-subtle: rgba(255, 255, 255, 0.12);
+  --color-border-hover: rgba(255, 255, 255, 0.24);
+
+  /* Shadows */
+  --card-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  --card-shadow-sm: 0 8px 16px rgba(0, 0, 0, 0.4);
+
+  /* Heatmap */
+  --heatmap-empty: #141416;
+  --heatmap-1: #1a422a;
+  --heatmap-2: #266b3f;
+  --heatmap-3: #2fa158;
+  --heatmap-4: #30d158;
+
+  /* Functional Status (Restrained / Non-Neon) */
+  --color-status-success: #30d158;
+  --color-status-warning: #ffd60a;
+  --color-status-error: #ff453a;
+  --color-status-info: #0a84ff;
+}

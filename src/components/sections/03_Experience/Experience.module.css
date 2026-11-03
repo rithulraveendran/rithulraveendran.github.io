@@ -1,0 +1,171 @@
+.section {
+  position: relative;
+  padding: var(--space-24) var(--space-6);
+  border-top: 1px solid var(--color-border-hairline);
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: var(--space-16);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 3.5vw, var(--font-size-3xl));
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.subtitle {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  max-width: var(--max-width-reading);
+}
+
+/* Timeline Container */
+.timelineContainer {
+  position: relative;
+  margin-top: var(--space-12);
+}
+
+/* Horizontal Expanding Timeline Rail (Desktop) */
+.timelineTrack {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border-hairline);
+  margin-bottom: var(--space-12);
+  overflow: hidden;
+}
+
+.timelineProgress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-text-primary);
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* Grid of Experience Entries */
+.entriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-12);
+}
+
+.entryItem {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+}
+
+/* Period / Date Badge */
+.periodRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.periodNode {
+  display: none;
+}
+
+.periodText {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+/* Role & Organization */
+.role {
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.organization {
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-6);
+}
+
+/* Bullets */
+.deliverables {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.deliverableItem {
+  position: relative;
+  padding-left: var(--space-5);
+  font-size: 1.0625rem;
+  color: var(--color-text-primary);
+  opacity: 0.92;
+  line-height: 1.65;
+}
+
+.deliverableItem::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-text-tertiary);
+}
+
+/* Technologies List (Typographic row, no pills) */
+.techRow {
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border-hairline);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.techLabel {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin-right: var(--space-2);
+}
+
+.techTag {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.techSeparator {
+  color: var(--color-border-subtle);
+  font-size: var(--font-size-xs);
+}

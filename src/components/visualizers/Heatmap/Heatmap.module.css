@@ -1,0 +1,96 @@
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.scrollArea {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: var(--space-3);
+  scrollbar-width: thin;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  min-width: 680px;
+  height: auto;
+}
+
+.dayCell {
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+  cursor: pointer;
+  shape-rendering: geometricPrecision;
+}
+
+.dayCell:hover {
+  stroke: var(--color-text-primary);
+  stroke-width: 1.5px;
+}
+
+.level0 { fill: var(--heatmap-empty, #141416); }
+.level1 { fill: var(--heatmap-1, #1a422a); }
+.level2 { fill: var(--heatmap-2, #266b3f); }
+.level3 { fill: var(--heatmap-3, #2fa158); }
+.level4 { fill: var(--heatmap-4, #30d158); }
+
+.legendRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.legendCells {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legendCell {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.legendCell.level0 {
+  background-color: var(--heatmap-empty, #16161a);
+  border: 1px solid var(--color-border-hairline);
+}
+.legendCell.level1 { background-color: var(--heatmap-1, #1a422a); }
+.legendCell.level2 { background-color: var(--heatmap-2, #266b3f); }
+.legendCell.level3 { background-color: var(--heatmap-3, #2fa158); }
+.legendCell.level4 { background-color: var(--heatmap-4, #30d158); }
+
+/* Tooltip floating box */
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background-color: var(--color-bg-surface-elevated);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  white-space: nowrap;
+  z-index: 100;
+  transform: translate(-50%, -100%);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.tooltipVisible {
+  opacity: 1;
+}
