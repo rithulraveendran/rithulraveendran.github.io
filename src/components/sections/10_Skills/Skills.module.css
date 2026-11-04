@@ -90,3 +90,23 @@
   font-size: var(--font-size-sm);
   user-select: none;
 }
+
+@media (max-width: 768px) {
+  .section {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .categoryRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding: var(--space-6) 0;
+  }
+
+  .skillsGroup {
+    gap: var(--space-2) var(--space-4);
+  }
+
+  .skillItem {
+    font-size: var(--font-size-base);
+  }
+}

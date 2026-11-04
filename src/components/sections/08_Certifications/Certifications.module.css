@@ -253,3 +253,30 @@
 .credlyAction:hover {
   color: var(--color-text-primary);
 }
+
+@media (max-width: 860px) {
+  .stageWrapper {
+    min-height: auto;
+    padding: var(--space-12) var(--space-4) var(--space-16);
+  }
+
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--space-4);
+    row-gap: var(--space-4);
+  }
+
+  .cardMedia {
+    height: 120px;
+  }
+}
+
+@media (max-width: 520px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardMedia {
+    height: 160px;
+  }
+}

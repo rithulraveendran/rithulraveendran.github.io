@@ -336,3 +336,41 @@
 .finaleButton:hover {
   opacity: 0.9;
 }
+
+/* Mobile Responsive Layout (<=860px) */
+@media (max-width: 860px) {
+  .pinnedWrapper {
+    min-height: auto;
+    padding: var(--space-12) 0;
+  }
+
+  .headerContainer {
+    padding: 0 var(--space-4) var(--space-4);
+  }
+
+  .scrollHint,
+  .progressBarTrack {
+    display: none;
+  }
+
+  .trackViewport {
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .track {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 var(--space-4);
+    gap: var(--space-6);
+  }
+
+  .projectPanel,
+  .panelFinale {
+    width: 100%;
+    max-height: none;
+    overflow-y: visible;
+    padding: var(--space-6) var(--space-5);
+    box-shadow: var(--card-shadow);
+  }
+}

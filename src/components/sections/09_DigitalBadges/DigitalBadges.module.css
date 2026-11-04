@@ -259,3 +259,42 @@
 .leetcodeBox:hover .lcBadgeImage {
   transform: scale(1.035);
 }
+
+@media (max-width: 860px) {
+  .section {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .awsGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .midTierRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .gcpGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6) var(--space-3);
+  }
+}
+
+@media (max-width: 520px) {
+  .gcpGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .distinctBadgeBox {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .leetcodeBox {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}

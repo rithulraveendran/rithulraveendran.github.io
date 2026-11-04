@@ -248,3 +248,33 @@
 .backToTop:hover {
   color: var(--color-text-primary);
 }
+
+@media (max-width: 768px) {
+  .footer {
+    padding: var(--space-16) var(--space-4) var(--space-8);
+  }
+
+  .topSection {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .emailRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .emailLink {
+    font-size: var(--font-size-base);
+    word-break: break-all;
+  }
+
+  .socialGrid {
+    gap: var(--space-4);
+  }
+
+  .bottomBar {
+    justify-content: center;
+  }
+}

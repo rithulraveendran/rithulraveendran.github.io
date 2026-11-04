@@ -169,3 +169,27 @@
   color: var(--color-border-subtle);
   font-size: var(--font-size-xs);
 }
+
+@media (max-width: 860px) {
+  .section {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .header {
+    margin-bottom: var(--space-8);
+  }
+
+  .timelineTrack {
+    display: none;
+  }
+
+  .entriesGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .entryItem {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

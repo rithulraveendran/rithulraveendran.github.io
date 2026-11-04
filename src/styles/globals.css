@@ -4,7 +4,8 @@
 /* Base smooth theme transition */
 html,
 body {
-  min-width: 1280px;
+  width: 100%;
+  overflow-x: hidden;
   background-color: var(--color-bg-base);
   color: var(--color-text-primary);
   transition: background-color var(--transition-normal), color var(--transition-normal);

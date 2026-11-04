@@ -180,3 +180,42 @@
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-sm);
 }
+
+@media (max-width: 860px) {
+  .hero {
+    padding: var(--space-16) var(--space-4) var(--space-12);
+    min-height: auto;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+    margin-bottom: var(--space-8);
+  }
+
+  .portraitCol {
+    justify-content: center;
+  }
+
+  .portraitFrame {
+    width: min(260px, 70vw);
+  }
+
+  .actions {
+    gap: var(--space-3);
+  }
+
+  .metaRail {
+    margin-top: var(--space-12);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .metaRail {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}

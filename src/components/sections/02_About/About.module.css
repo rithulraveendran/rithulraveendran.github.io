@@ -225,3 +225,38 @@
   line-height: var(--line-height-normal);
   max-width: 18rem;
 }
+
+@media (max-width: 860px) {
+  .section {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .photoCol {
+    position: static;
+    height: 420px;
+    max-width: 360px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .factRow {
+    grid-template-columns: 7.5rem 1fr;
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .photoCol {
+    height: 340px;
+  }
+
+  .factRow {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}

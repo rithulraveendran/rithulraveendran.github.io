@@ -25,8 +25,8 @@ export function Projects() {
 
       const mm = gsap.matchMedia();
 
-      // Universal Pinned Horizontal Showcase (Locked for all devices)
-      mm.add('all', () => {
+      // Pinned Horizontal Showcase on Desktop only (>=861px)
+      mm.add('(min-width: 861px)', () => {
         const track = trackRef.current;
         const section = sectionRef.current;
         if (!track || !section) return;

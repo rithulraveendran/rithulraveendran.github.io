@@ -282,3 +282,32 @@
   gap: var(--space-6);
   margin-top: var(--space-4);
 }
+
+@media (max-width: 860px) {
+  .section {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  .leetcodeContent {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: var(--space-6);
+  }
+
+  .panel {
+    padding: var(--space-5);
+  }
+
+  .heatmapContainer {
+    padding: var(--space-4);
+  }
+
+  .secondaryRow {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .secondaryCard {
+    padding: var(--space-5);
+  }
+}
