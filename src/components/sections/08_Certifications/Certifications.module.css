@@ -257,26 +257,25 @@
 @media (max-width: 860px) {
   .stageWrapper {
     min-height: auto;
-    padding: var(--space-12) var(--space-4) var(--space-16);
+    padding: var(--space-12) var(--space-5) var(--space-16);
   }
 
   .galleryGrid {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: var(--space-4);
-    row-gap: var(--space-4);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-3);
+    row-gap: var(--space-3);
   }
 
   .cardMedia {
-    height: 120px;
-  }
-}
-
-@media (max-width: 520px) {
-  .galleryGrid {
-    grid-template-columns: 1fr;
+    height: 96px;
   }
 
-  .cardMedia {
-    height: 160px;
+  .cardBody {
+    padding: var(--space-2) var(--space-2-5);
+  }
+
+  .certTitle {
+    font-size: 11.5px;
+    line-height: 1.25;
   }
 }

@@ -141,21 +141,24 @@
 
 @media (max-width: 860px) {
   .section {
-    padding: var(--space-16) var(--space-4);
+    padding: var(--space-16) var(--space-5);
   }
 
   .metricsGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-3);
+  }
+
+  .metricCard {
+    padding: var(--space-4);
+    gap: var(--space-1);
+  }
+
+  .metricValue {
+    font-size: 1.85rem;
   }
 
   .heatmapCard {
     padding: var(--space-4);
-  }
-}
-
-@media (max-width: 480px) {
-  .metricsGrid {
-    grid-template-columns: 1fr;
   }
 }

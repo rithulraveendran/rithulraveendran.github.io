@@ -262,39 +262,97 @@
 
 @media (max-width: 860px) {
   .section {
-    padding: var(--space-16) var(--space-4);
+    padding: var(--space-16) var(--space-5);
+  }
+
+  .groupsContainer {
+    gap: var(--space-10);
   }
 
   .awsGrid {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .awsBadgeImage {
+    width: 88px;
+    height: 88px;
+  }
+
+  .badgeTitle {
+    font-size: 0.85rem;
+    max-width: 100%;
   }
 
   .midTierRow {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
-
-  .gcpGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6) var(--space-3);
-  }
-}
-
-@media (max-width: 520px) {
-  .gcpGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
   }
 
   .distinctBadgeBox {
     flex-direction: column;
     text-align: center;
-    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .oracleBadgeImage,
+  .ciscoBadgeImage {
+    width: 80px;
+    height: 80px;
+  }
+
+  .distinctBadgeTitle {
+    font-size: 0.95rem;
+  }
+
+  .gcpGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-5) var(--space-2);
+  }
+
+  .gcpBadgeImage {
+    width: 75px;
+    height: 75px;
+  }
+
+  .gcpTitle {
+    font-size: 0.75rem;
+    max-width: 100%;
   }
 
   .leetcodeBox {
-    flex-direction: column;
-    text-align: center;
     align-items: center;
+    gap: var(--space-4);
+  }
+
+  .lcBadgeImage {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .awsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+  }
+
+  .awsBadgeImage {
+    width: 75px;
+    height: 75px;
+  }
+
+  .badgeTitle {
+    font-size: 0.75rem;
+  }
+
+  .gcpGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4) var(--space-1-5);
+  }
+
+  .gcpBadgeImage {
+    width: 65px;
+    height: 65px;
   }
 }

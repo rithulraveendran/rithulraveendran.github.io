@@ -270,8 +270,14 @@
     word-break: break-all;
   }
 
+  .videoWrapper {
+    width: 64px;
+    height: 64px;
+  }
+
   .socialGrid {
-    gap: var(--space-4);
+    gap: var(--space-3) var(--space-4);
+    justify-content: flex-start;
   }
 
   .bottomBar {

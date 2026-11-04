@@ -370,7 +370,27 @@
     width: 100%;
     max-height: none;
     overflow-y: visible;
-    padding: var(--space-6) var(--space-5);
+    padding: var(--space-5) var(--space-4);
     box-shadow: var(--card-shadow);
+    gap: var(--space-2);
+  }
+
+  .projectTitle {
+    font-size: 1.35rem;
+  }
+
+  .projectTagline {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .projectDescription {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: var(--space-3);
+  }
+
+  .visualFrame {
+    height: 150px;
   }
 }
