@@ -47,9 +47,14 @@ export function Competitive() {
     0
   );
 
+  // SkillRack solved count (curriculum / college coding platform baseline)
+  // Per instruction: included in the total overall count only.
+  const skillrackSolved = 520;
+
   const totalSolvedAll =
     (leetcode.totalSolved || 0) +
-    (codechef.solvedCount ?? 64);
+    (codechef.solvedCount ?? 64) +
+    skillrackSolved;
 
   useScrollTrigger(
     () => {
@@ -108,7 +113,7 @@ export function Competitive() {
           <span className={styles.cpLabel}>problems solved</span>
         </div>
         <p className={styles.cpSub}>
-          Across verified competitive profiles on LeetCode, Codeforces, AtCoder, and CodeChef.
+          Across verified profiles and coursework on SkillRack, LeetCode, CodeChef, and Codeforces.
         </p>
       </div>
 
