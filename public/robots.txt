@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rithulraveendran.github.io/
+Sitemap: https://rithulraveendran.github.io/sitemap.xml
