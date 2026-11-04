@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useScrollTrigger } from '@/hooks/useScrollTrigger';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import { CountUp } from '@/components/common/CountUp/CountUp';
 import statsJson from '@/data/stats.json';
 import type { TelemetryData } from '@/types/stats';
 import { PROFILE_CONFIG } from '@/config/profile';
@@ -82,25 +83,33 @@ export function GitHub() {
       <div ref={metricsRef} className={styles.metricsGrid}>
         <div className={styles.metricCard}>
           <span className={styles.metricLabel}>Public Repositories</span>
-          <span className={styles.metricValue}>{github.publicRepos}</span>
+          <span className={styles.metricValue}>
+            <CountUp value={github.publicRepos} />
+          </span>
           <span className={styles.metricStatus}>Source repositories</span>
         </div>
 
         <div className={styles.metricCard}>
           <span className={styles.metricLabel}>Total Contributions</span>
-          <span className={styles.metricValue}>{github.totalContributions}</span>
+          <span className={styles.metricValue}>
+            <CountUp value={github.totalContributions} />
+          </span>
           <span className={styles.metricStatus}>Past 53 weeks</span>
         </div>
 
         <div className={styles.metricCard}>
           <span className={styles.metricLabel}>Stars Earned</span>
-          <span className={styles.metricValue}>{github.totalStars}</span>
+          <span className={styles.metricValue}>
+            <CountUp value={github.totalStars} />
+          </span>
           <span className={styles.metricStatus}>Across public repositories</span>
         </div>
 
         <div className={styles.metricCard}>
           <span className={styles.metricLabel}>Repository Forks</span>
-          <span className={styles.metricValue}>{github.totalForks}</span>
+          <span className={styles.metricValue}>
+            <CountUp value={github.totalForks} />
+          </span>
           <span className={styles.metricStatus}>Across public projects</span>
         </div>
       </div>

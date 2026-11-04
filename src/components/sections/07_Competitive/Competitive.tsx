@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useScrollTrigger } from '@/hooks/useScrollTrigger';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+import { CountUp } from '@/components/common/CountUp/CountUp';
 import statsJson from '@/data/stats.json';
 import type { TelemetryData } from '@/types/stats';
 import { PROFILE_CONFIG } from '@/config/profile';
@@ -45,6 +46,10 @@ export function Competitive() {
     (sum, d) => sum + (d.total || 0),
     0
   );
+
+  const totalSolvedAll =
+    (leetcode.totalSolved || 0) +
+    (codechef.solvedCount ?? 64);
 
   useScrollTrigger(
     () => {
@@ -94,57 +99,92 @@ export function Competitive() {
         </div>
       </header>
 
-      {/* Platform Summary Rail */}
+      {/* Punchy Problem Count Hero */}
+      <div className={styles.cpHero}>
+        <div className={styles.cpBig}>
+          <span className={styles.cpCount}>
+            <CountUp value={totalSolvedAll} />
+          </span>
+          <span className={styles.cpLabel}>problems solved</span>
+        </div>
+        <p className={styles.cpSub}>
+          Across verified competitive profiles on LeetCode, Codeforces, AtCoder, and CodeChef.
+        </p>
+      </div>
+
+      {/* Platform Summary Jump Cards */}
       <div ref={summaryRailRef} className={styles.summaryRail}>
-        {/* LeetCode Summary */}
-        <div className={styles.summaryCard}>
+        {/* LeetCode Jump Card */}
+        <a
+          href="#leetcode"
+          className={styles.jumpCard}
+          style={{ '--brand-color': '#ffa116' } as React.CSSProperties}
+        >
           <div className={styles.summaryTop}>
-            <span className={styles.platformName}>LeetCode</span>
+            <span className={styles.platformName} style={{ color: '#ffa116' }}>LeetCode</span>
           </div>
-          <div className={styles.summaryValue}>{leetcode.totalSolved}</div>
-          <div className={styles.summarySub}>
-            {leetcode.streak}d streak · {leetcode.activeDays} active days
+          <div className={styles.jumpCardValue}>
+            <CountUp value={leetcode.totalSolved} />
           </div>
-        </div>
+          <div className={styles.jumpCardLabel}>
+            solved on LeetCode
+          </div>
+        </a>
 
-        {/* Codeforces Summary */}
-        <div className={styles.summaryCard}>
+        {/* Codeforces Jump Card */}
+        <a
+          href="#codeforces"
+          className={styles.jumpCard}
+          style={{ '--brand-color': '#1f8acb' } as React.CSSProperties}
+        >
           <div className={styles.summaryTop}>
-            <span className={styles.platformName}>Codeforces</span>
+            <span className={styles.platformName} style={{ color: '#1f8acb' }}>Codeforces</span>
           </div>
-          <div className={styles.summaryValue}>{codeforces.rating}</div>
-          <div className={styles.summarySub}>
-            Rank: {codeforces.rank} · {codeforces.contestsCount} contests
+          <div className={styles.jumpCardValue}>
+            <CountUp value={codeforces.rating} />
           </div>
-        </div>
+          <div className={styles.jumpCardLabel}>
+            rating · {codeforces.rank}
+          </div>
+        </a>
 
-        {/* AtCoder Summary */}
-        <div className={styles.summaryCard}>
+        {/* AtCoder Jump Card */}
+        <a
+          href="#atcoder"
+          className={styles.jumpCard}
+          style={{ '--brand-color': '#804000' } as React.CSSProperties}
+        >
           <div className={styles.summaryTop}>
-            <span className={styles.platformName}>AtCoder</span>
+            <span className={styles.platformName} style={{ color: '#804000' }}>AtCoder</span>
           </div>
-          <div className={styles.summaryValue}>
-            {atcoder.rating !== null && atcoder.rating !== undefined ? atcoder.rating : 'Unrated'}
+          <div className={styles.jumpCardValue}>
+            {atcoder.rating !== null && atcoder.rating !== undefined ? (
+              <CountUp value={atcoder.rating} />
+            ) : (
+              'Active'
+            )}
           </div>
-          <div className={styles.summarySub}>
-            Profile active · {atcoder.contestsCount} rated contests
+          <div className={styles.jumpCardLabel}>
+            {atcoder.contestsCount} rated contests
           </div>
-        </div>
+        </a>
 
-        {/* CodeChef Summary */}
-        <div className={styles.summaryCard}>
+        {/* CodeChef Jump Card */}
+        <a
+          href="#codechef"
+          className={styles.jumpCard}
+          style={{ '--brand-color': '#5b4638' } as React.CSSProperties}
+        >
           <div className={styles.summaryTop}>
-            <span className={styles.platformName}>CodeChef</span>
+            <span className={styles.platformName} style={{ color: '#5b4638' }}>CodeChef</span>
           </div>
-          <div className={styles.summaryValue}>
-            {codechef.status === 'active' ? (codechef.rating ? codechef.rating : `${codechef.solvedCount ?? 64} Solved`) : 'Offline'}
+          <div className={styles.jumpCardValue}>
+            <CountUp value={codechef.solvedCount ?? 64} />
           </div>
-          <div className={styles.summarySub}>
-            {codechef.status === 'active'
-              ? `${codechef.stars ? codechef.stars + ' · ' : 'Profile active · '}${codechef.solvedCount ?? 64} solved`
-              : 'Telemetry sync pending'}
+          <div className={styles.jumpCardLabel}>
+            solved on CodeChef
           </div>
-        </div>
+        </a>
       </div>
 
       {/* Combined Heatmap */}
@@ -170,7 +210,7 @@ export function Competitive() {
       {/* Deep-Dive Panels */}
       <div className={styles.deepDivesGrid}>
         {/* LeetCode Deep Dive */}
-        <article className={styles.panel} aria-label="LeetCode Profile Breakdown">
+        <article id="leetcode" className={styles.panel} aria-label="LeetCode Profile Breakdown">
           <header className={styles.panelHeader}>
             <div className={styles.panelTitleGroup}>
               <h3 className={styles.panelTitle}>LeetCode</h3>
@@ -185,6 +225,19 @@ export function Competitive() {
               <span aria-hidden="true">↗</span>
             </a>
           </header>
+
+          {/* Interactive Rank Progress Meter */}
+          <div className={styles.rankMeter}>
+            <p className={styles.meterLabel}>
+              Active solver · Next milestone: 100 solved problems on LeetCode
+            </p>
+            <div className={styles.meterTrack}>
+              <div
+                className={styles.meterFill}
+                style={{ width: `${Math.min(100, Math.round(((leetcode.totalSolved || 0) / 100) * 100))}%` }}
+              />
+            </div>
+          </div>
 
           <div className={styles.leetcodeContent}>
             <RadialProgress
@@ -216,11 +269,15 @@ export function Competitive() {
           <div className={styles.statRow}>
             <div className={styles.statItem}>
               <span className={styles.statLabel}>Current Streak</span>
-              <span className={styles.statValue}>{leetcode.streak} Days</span>
+              <span className={styles.statValue}>
+                <CountUp value={leetcode.streak} /> Days
+              </span>
             </div>
             <div className={styles.statItem}>
               <span className={styles.statLabel}>Active Days</span>
-              <span className={styles.statValue}>{leetcode.activeDays} Days</span>
+              <span className={styles.statValue}>
+                <CountUp value={leetcode.activeDays} /> Days
+              </span>
             </div>
             <div className={styles.statItem}>
               <span className={styles.statLabel}>Contest Rating</span>
@@ -240,7 +297,7 @@ export function Competitive() {
         </article>
 
         {/* Codeforces Deep Dive */}
-        <article className={styles.panel} aria-label="Codeforces Contest Performance">
+        <article id="codeforces" className={styles.panel} aria-label="Codeforces Contest Performance">
           <header className={styles.panelHeader}>
             <div className={styles.panelTitleGroup}>
               <h3 className={styles.panelTitle}>Codeforces</h3>
@@ -256,14 +313,34 @@ export function Competitive() {
             </a>
           </header>
 
+          {/* Codeforces Rank Meter */}
+          <div className={styles.rankMeter}>
+            <p className={styles.meterLabel}>
+              Current: {codeforces.rank} ({codeforces.rating}) · Next milestone: Pupil at 1200
+            </p>
+            <div className={styles.meterTrack}>
+              <div
+                className={styles.meterFill}
+                style={{
+                  width: `${Math.min(100, Math.max(15, Math.round(((codeforces.rating || 0) / 1200) * 100)))}%`,
+                  background: 'linear-gradient(90deg, #1f8acb, #00d2ff)'
+                }}
+              />
+            </div>
+          </div>
+
           <div className={styles.codeforcesStats}>
             <div className={styles.codeforcesMetricCard}>
               <span className={styles.statLabel}>Current Rating</span>
-              <span className={styles.statValue}>{codeforces.rating}</span>
+              <span className={styles.statValue}>
+                <CountUp value={codeforces.rating} />
+              </span>
             </div>
             <div className={styles.codeforcesMetricCard}>
               <span className={styles.statLabel}>Peak Rating</span>
-              <span className={styles.statValue}>{codeforces.maxRating}</span>
+              <span className={styles.statValue}>
+                <CountUp value={codeforces.maxRating} />
+              </span>
             </div>
             <div className={styles.codeforcesMetricCard}>
               <span className={styles.statLabel}>Official Rank</span>
@@ -271,7 +348,9 @@ export function Competitive() {
             </div>
             <div className={styles.codeforcesMetricCard}>
               <span className={styles.statLabel}>Contests Attended</span>
-              <span className={styles.statValue}>{codeforces.contestsCount}</span>
+              <span className={styles.statValue}>
+                <CountUp value={codeforces.contestsCount} />
+              </span>
             </div>
           </div>
 
@@ -281,7 +360,7 @@ export function Competitive() {
         {/* Secondary Platforms (AtCoder & CodeChef) */}
         <div className={styles.secondaryRow}>
           {/* AtCoder Card */}
-          <article className={styles.secondaryCard} aria-label="AtCoder Profile Status">
+          <article id="atcoder" className={styles.secondaryCard} aria-label="AtCoder Profile Status">
             <div>
               <header className={styles.panelHeader}>
                 <div className={styles.panelTitleGroup}>
@@ -310,7 +389,9 @@ export function Competitive() {
                   </div>
                   <div className={styles.statItem}>
                     <span className={styles.statLabel}>Contests</span>
-                    <span className={styles.statValue}>{atcoder.contestsCount}</span>
+                    <span className={styles.statValue}>
+                      <CountUp value={atcoder.contestsCount} />
+                    </span>
                   </div>
                 </div>
               </div>
@@ -318,7 +399,7 @@ export function Competitive() {
           </article>
 
           {/* CodeChef Card */}
-          <article className={styles.secondaryCard} aria-label="CodeChef Profile Status">
+          <article id="codechef" className={styles.secondaryCard} aria-label="CodeChef Profile Status">
             <div>
               <header className={styles.panelHeader}>
                 <div className={styles.panelTitleGroup}>
@@ -350,7 +431,9 @@ export function Competitive() {
                   </div>
                   <div className={styles.statItem}>
                     <span className={styles.statLabel}>Problems Solved</span>
-                    <span className={styles.statValue}>{codechef.solvedCount ?? 64}</span>
+                    <span className={styles.statValue}>
+                      <CountUp value={codechef.solvedCount ?? 64} />
+                    </span>
                   </div>
                 </div>
               </div>
