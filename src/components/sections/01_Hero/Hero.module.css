@@ -27,11 +27,6 @@
   align-items: center;
 }
 
-.portraitWrapper {
-  position: relative;
-  display: inline-block;
-}
-
 .portraitFrame {
   position: relative;
   width: min(340px, 100%);
@@ -42,54 +37,6 @@
   background-color: var(--color-bg-surface);
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
   transition: border-color var(--transition-fast), transform var(--transition-fast);
-}
-
-/* Playful Kinetic Orbit Badge */
-.orbitBadge {
-  position: absolute;
-  bottom: -22px;
-  right: -26px;
-  width: 120px;
-  height: 120px;
-  pointer-events: none;
-  animation: orbitSpin 20s linear infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-@keyframes orbitSpin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.orbitSvg {
-  width: 100%;
-  height: 100%;
-}
-
-.orbitText {
-  font-family: var(--font-mono);
-  font-size: 8.5px;
-  letter-spacing: 0.16em;
-  fill: var(--color-text-secondary);
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.orbitDot {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-pill);
-  background-color: var(--color-bg-surface-elevated);
-  border: 1px solid var(--color-border-subtle);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 .portraitFrame:hover {
@@ -257,22 +204,6 @@
     aspect-ratio: 1;
     border-radius: var(--radius-2xl);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-  }
-
-  .orbitBadge {
-    width: 86px;
-    height: 86px;
-    bottom: -12px;
-    right: -14px;
-  }
-
-  .orbitDot {
-    width: 24px;
-    height: 24px;
-  }
-
-  .orbitText {
-    font-size: 6.5px;
   }
 
   .headline {

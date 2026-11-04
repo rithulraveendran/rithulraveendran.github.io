@@ -80,31 +80,13 @@ export function Hero() {
         </div>
 
         <div className={styles.portraitCol}>
-          <div className={styles.portraitWrapper}>
-            <div className={styles.portraitFrame}>
-              <img
-                src={getAssetPath('assets/hero/portrait.jpg')}
-                alt={PROFILE_CONFIG.name}
-                className={styles.portraitImg}
-                loading="eager"
-              />
-            </div>
-            {/* Playful Rotating Orbit Badge */}
-            <div className={styles.orbitBadge} aria-hidden="true">
-              <svg className={styles.orbitSvg} viewBox="0 0 140 140">
-                <path
-                  id="orbitTextPath"
-                  d="M 70, 70 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0"
-                  fill="none"
-                />
-                <text className={styles.orbitText}>
-                  <textPath href="#orbitTextPath" startOffset="0%">
-                    AI &amp; ML • DEEP LEARNING • COMPUTER VISION • 
-                  </textPath>
-                </text>
-              </svg>
-              <div className={styles.orbitDot} />
-            </div>
+          <div className={styles.portraitFrame}>
+            <img
+              src={getAssetPath('assets/hero/portrait.jpg')}
+              alt={PROFILE_CONFIG.name}
+              className={styles.portraitImg}
+              loading="eager"
+            />
           </div>
         </div>
       </div>
