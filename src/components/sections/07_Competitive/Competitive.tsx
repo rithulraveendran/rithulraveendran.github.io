@@ -56,6 +56,12 @@ export function Competitive() {
     (codechef.solvedCount ?? 64) +
     skillrackSolved;
 
+  // Dynamic next milestone calculation for LeetCode
+  const lcSolved = leetcode.totalSolved || 0;
+  const lcMilestones = [50, 100, 200, 300, 500, 1000];
+  const nextLcMilestone = lcMilestones.find((m) => m > lcSolved) || Math.ceil((lcSolved + 1) / 100) * 100;
+  const lcProgressPct = Math.min(100, Math.round((lcSolved / nextLcMilestone) * 100));
+
   useScrollTrigger(
     () => {
       if (prefersReducedMotion || typeof window === 'undefined') return;
@@ -234,12 +240,12 @@ export function Competitive() {
           {/* Interactive Rank Progress Meter */}
           <div className={styles.rankMeter}>
             <p className={styles.meterLabel}>
-              Active solver · Next milestone: 100 solved problems on LeetCode
+              Active solver · Next milestone: {nextLcMilestone} solved problems on LeetCode ({nextLcMilestone - lcSolved} to go)
             </p>
             <div className={styles.meterTrack}>
               <div
                 className={styles.meterFill}
-                style={{ width: `${Math.min(100, Math.round(((leetcode.totalSolved || 0) / 100) * 100))}%` }}
+                style={{ width: `${lcProgressPct}%` }}
               />
             </div>
           </div>
