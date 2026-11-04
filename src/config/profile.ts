@@ -11,7 +11,7 @@ export const PROFILE_CONFIG: ProfileConfig = {
     period: '2025 — 2029',
   },
   contact: {
-    email: 'flightsofwhisper@gmail.com',
+    email: 'iamrithulr@gmail.com',
   },
   resume: {
     path: 'assets/resume/resume.pdf',
@@ -39,7 +39,7 @@ export const PROFILE_CONFIG: ProfileConfig = {
     {
       platform: 'google',
       label: 'Email (Gmail)',
-      url: 'https://mail.google.com/mail/?view=cm&fs=1&to=flightsofwhisper@gmail.com&su=Inquiry%20%2F%20Opportunity%20%E2%80%94%20Rithul%20Raveendran%20Portfolio&body=Hi%20Rithul%2C%0A%0AI%20came%20across%20your%20engineering%20portfolio%20and%20would%20like%20to%20connect%20regarding%3A%0A%0A',
+      url: 'https://mail.google.com/mail/?view=cm&fs=1&to=iamrithulr@gmail.com&su=Inquiry%20%2F%20Opportunity%20%E2%80%94%20Rithul%20Raveendran%20Portfolio&body=Hi%20Rithul%2C%0A%0AI%20came%20across%20your%20engineering%20portfolio%20and%20would%20like%20to%20connect%20regarding%3A%0A%0A',
       videoAsset: 'assets/social/Google logo.webm',
     },
     {
