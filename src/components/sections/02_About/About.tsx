@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
 import { useScrollTrigger } from '@/hooks/useScrollTrigger';
 import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 import { ABOUT_CONTENT } from '@/content/about';
@@ -8,6 +8,8 @@ import styles from './About.module.css';
 
 export function About() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const textContentRef = useRef<HTMLDivElement | null>(null);
   const [activePhotoIndex, setActivePhotoIndex] = useState<number>(0);
   const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -17,26 +19,47 @@ export function About() {
 
   // Scroll choreography:
   // 1. Once About is reached, pin screen down and change image during initial scroll.
-  // 2. Once image changes, unpin: further scroll moves the text alone, while the
-  //    sticky photo stage stays firmly in place beside it till the end of the section.
+  // 2. Further scroll moves the text alone inside its viewport, while the image
+  //    stays firmly locked in view on screen until the very end of the section.
   useScrollTrigger(
     () => {
       if (prefersReducedMotion || typeof window === 'undefined' || totalPhotos <= 1) return;
 
-      const trigger = ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: 'top 4rem',
-        end: '+=400',
-        pin: true,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          const targetIdx = Math.min(totalPhotos - 1, Math.floor(self.progress * totalPhotos));
-          setActivePhotoIndex((prev) => (prev !== targetIdx ? targetIdx : prev));
+      const getOverflow = () => {
+        if (!textContentRef.current || !viewportRef.current) return 300;
+        return Math.max(0, textContentRef.current.scrollHeight - viewportRef.current.clientHeight + 48);
+      };
+
+      const totalScroll = () => 400 + getOverflow();
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 4rem',
+          end: () => `+=${totalScroll()}`,
+          pin: true,
+          scrub: 0.6,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const targetIdx = self.progress >= 0.15 ? 1 : 0;
+            setActivePhotoIndex((prev) => (prev !== targetIdx ? targetIdx : prev));
+          },
         },
       });
 
+      // Phase 1: Hold text stationary while photo swaps
+      tl.to({}, { duration: 0.2 });
+
+      // Phase 2: Text moves alone while photo stays pinned beside it till the end
+      tl.to(textContentRef.current, {
+        y: () => -getOverflow(),
+        ease: 'none',
+        duration: 0.8,
+      });
+
       return () => {
-        trigger.kill();
+        tl.kill();
       };
     },
     sectionRef,
@@ -52,14 +75,33 @@ export function About() {
   return (
     <section id="about" ref={sectionRef} className={styles.section} aria-label="About Rithul Raveendran">
       <div className={styles.inner}>
-        {/* Header Block: Eyebrow, Title & Lead */}
-        <div className={styles.headerBlock}>
-          <p className={styles.eyebrow}>{ABOUT_CONTENT.eyebrow}</p>
-          <h2 className={styles.title}>{ABOUT_CONTENT.title}</h2>
-          <p className={styles.lead}>{ABOUT_CONTENT.lead}</p>
+        {/* Left Column (Desktop) / Bottom Region (Mobile): Text Narrative Viewport */}
+        <div ref={viewportRef} className={styles.contentViewport}>
+          <div ref={textContentRef} className={styles.textContent}>
+            <p className={styles.eyebrow}>{ABOUT_CONTENT.eyebrow}</p>
+            <h2 className={styles.title}>{ABOUT_CONTENT.title}</h2>
+            <p className={styles.lead}>{ABOUT_CONTENT.lead}</p>
+
+            <div className={styles.narrative}>
+              {ABOUT_CONTENT.paragraphs.map((paragraph, idx) => (
+                <p key={idx} className={styles.paragraph}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            <dl className={styles.factsTable} aria-label="Academic & Technical Background Facts">
+              {ABOUT_CONTENT.facts.map((fact, idx) => (
+                <div key={idx} className={styles.factRow}>
+                  <dt className={styles.factLabel}>{fact.label}</dt>
+                  <dd className={styles.factValue}>{fact.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </div>
 
-        {/* Dynamic Photograph Stage (Sticky beside text on desktop till end) */}
+        {/* Right Column (Desktop) / Top Region (Mobile): Dynamic Photograph Stage */}
         <div
           className={styles.photoCol}
           aria-label="Personal Photography Gallery"
@@ -135,26 +177,6 @@ export function About() {
               })
             )}
           </div>
-        </div>
-
-        {/* Story Block: Narrative & Facts */}
-        <div className={styles.storyBlock}>
-          <div className={styles.narrative}>
-            {ABOUT_CONTENT.paragraphs.map((paragraph, idx) => (
-              <p key={idx} className={styles.paragraph}>
-                {paragraph}
-              </p>
-            ))}
-          </div>
-
-          <dl className={styles.factsTable} aria-label="Academic & Technical Background Facts">
-            {ABOUT_CONTENT.facts.map((fact, idx) => (
-              <div key={idx} className={styles.factRow}>
-                <dt className={styles.factLabel}>{fact.label}</dt>
-                <dd className={styles.factValue}>{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </div>
     </section>
