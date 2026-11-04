@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: var(--space-24) var(--space-6);
+  padding: var(--space-20) var(--space-6);
   border-top: 1px solid var(--color-border-hairline);
   max-width: var(--max-width-wide);
   margin: 0 auto;
@@ -9,12 +9,24 @@
 .inner {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: var(--space-16);
+  grid-template-areas:
+    "header photo"
+    "story  photo";
+  column-gap: var(--space-16);
+  row-gap: var(--space-6);
   align-items: start;
 }
 
-/* Left Column: Narrative Content */
-.contentCol {
+/* Header Block: Eyebrow, Title & Lead */
+.headerBlock {
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Story Block: Narrative & Facts */
+.storyBlock {
+  grid-area: story;
   display: flex;
   flex-direction: column;
 }
@@ -42,7 +54,7 @@
   font-size: 1.25rem;
   color: var(--color-text-primary);
   line-height: var(--line-height-relaxed);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-4);
   font-weight: var(--font-weight-medium);
 }
 
@@ -62,7 +74,7 @@
 
 /* Structured Facts Table */
 .factsTable {
-  margin-top: var(--space-8);
+  margin-top: var(--space-4);
   border-top: 1px solid var(--color-border-hairline);
   display: flex;
   flex-direction: column;
@@ -87,11 +99,12 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Right Column: Sticky Photo Stage */
+/* Right Column: Dynamic Photo Stage (Moves naturally with text once unpinned) */
 .photoCol {
-  position: sticky;
-  top: calc(4rem + var(--space-8));
-  height: min(600px, 75vh);
+  grid-area: photo;
+  position: relative;
+  align-self: start;
+  height: min(580px, 70vh);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -228,17 +241,23 @@
 
 @media (max-width: 860px) {
   .section {
-    padding: var(--space-16) var(--space-5);
+    padding: var(--space-12) var(--space-5);
   }
 
   .inner {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .headerBlock {
+    order: 1;
   }
 
   .photoCol {
-    position: static;
-    width: min(14rem, 60%);
+    order: 2;
+    position: relative;
+    width: min(15rem, 65%);
     aspect-ratio: 4 / 5;
     height: auto;
     margin: var(--space-2) auto var(--space-4);
@@ -249,13 +268,17 @@
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
   }
 
+  .storyBlock {
+    order: 3;
+  }
+
   .title {
     font-size: clamp(1.85rem, 6vw, 2.4rem);
   }
 
   .lead {
     font-size: 1.1rem;
-    margin-bottom: var(--space-4);
+    margin-bottom: var(--space-2);
   }
 
   .paragraph {
