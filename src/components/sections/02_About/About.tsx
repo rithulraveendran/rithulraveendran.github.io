@@ -15,23 +15,18 @@ export function About() {
   const photos = ABOUT_CONTENT.photos;
   const totalPhotos = photos.length;
 
-  // Scroll-driven photo choreography:
-  // When the About section title arrives at top (below the fixed navbar),
-  // pin the screen to smoothly change the image, then unpin so scrolling moves
-  // the text with the image moving along until the end of the section.
+  // Scroll-driven photo choreography synchronized with the reading narrative
   useScrollTrigger(
     () => {
       if (prefersReducedMotion || typeof window === 'undefined' || totalPhotos <= 1) return;
 
       const trigger = ScrollTrigger.create({
         trigger: sectionRef.current,
-        start: 'top 4rem',
-        end: '+=450',
-        pin: true,
-        anticipatePin: 1,
+        start: 'top 30%',
+        end: 'bottom 70%',
         onUpdate: (self) => {
-          const targetIdx = Math.min(totalPhotos - 1, Math.floor(self.progress * totalPhotos));
-          setActivePhotoIndex((prev) => (prev !== targetIdx ? targetIdx : prev));
+          const targetIdx = self.progress >= 0.45 ? 1 : 0;
+          setActivePhotoIndex(targetIdx);
         },
       });
 
@@ -52,14 +47,31 @@ export function About() {
   return (
     <section id="about" ref={sectionRef} className={styles.section} aria-label="About Rithul Raveendran">
       <div className={styles.inner}>
-        {/* Header Block: Eyebrow, Title & Lead */}
-        <div className={styles.headerBlock}>
+        {/* Left Column: Narrative Content (Always Static & Unchanging) */}
+        <div className={styles.contentCol}>
           <p className={styles.eyebrow}>{ABOUT_CONTENT.eyebrow}</p>
           <h2 className={styles.title}>{ABOUT_CONTENT.title}</h2>
           <p className={styles.lead}>{ABOUT_CONTENT.lead}</p>
+
+          <div className={styles.narrative}>
+            {ABOUT_CONTENT.paragraphs.map((paragraph, idx) => (
+              <p key={idx} className={styles.paragraph}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <dl className={styles.factsTable} aria-label="Academic & Technical Background Facts">
+            {ABOUT_CONTENT.facts.map((fact, idx) => (
+              <div key={idx} className={styles.factRow}>
+                <dt className={styles.factLabel}>{fact.label}</dt>
+                <dd className={styles.factValue}>{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        {/* Dynamic Photograph Stage */}
+        {/* Right Column: Dynamic Photograph Stage */}
         <div
           className={styles.photoCol}
           aria-label="Personal Photography Gallery"
@@ -102,7 +114,7 @@ export function About() {
                       src={getAssetPath(photo.src)}
                       alt={photo.alt}
                       className={styles.photoImg}
-                      loading="eager"
+                      loading="lazy"
                       onError={() => handleImageError(photo.id)}
                     />
                     {photo.caption && (
@@ -135,26 +147,6 @@ export function About() {
               })
             )}
           </div>
-        </div>
-
-        {/* Story Block: Narrative & Background Facts */}
-        <div className={styles.storyBlock}>
-          <div className={styles.narrative}>
-            {ABOUT_CONTENT.paragraphs.map((paragraph, idx) => (
-              <p key={idx} className={styles.paragraph}>
-                {paragraph}
-              </p>
-            ))}
-          </div>
-
-          <dl className={styles.factsTable} aria-label="Academic & Technical Background Facts">
-            {ABOUT_CONTENT.facts.map((fact, idx) => (
-              <div key={idx} className={styles.factRow}>
-                <dt className={styles.factLabel}>{fact.label}</dt>
-                <dd className={styles.factValue}>{fact.value}</dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </div>
     </section>

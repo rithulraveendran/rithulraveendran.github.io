@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: var(--space-20) var(--space-6);
+  padding: var(--space-24) var(--space-6);
   border-top: 1px solid var(--color-border-hairline);
   max-width: var(--max-width-wide);
   margin: 0 auto;
@@ -9,24 +9,12 @@
 .inner {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  grid-template-areas:
-    "header photo"
-    "story  photo";
-  column-gap: var(--space-16);
-  row-gap: var(--space-6);
+  gap: var(--space-16);
   align-items: start;
 }
 
-/* Header Block: Eyebrow, Title & Lead */
-.headerBlock {
-  grid-area: header;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Story Block: Narrative & Facts */
-.storyBlock {
-  grid-area: story;
+/* Left Column: Narrative Content */
+.contentCol {
   display: flex;
   flex-direction: column;
 }
@@ -54,7 +42,7 @@
   font-size: 1.25rem;
   color: var(--color-text-primary);
   line-height: var(--line-height-relaxed);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
   font-weight: var(--font-weight-medium);
 }
 
@@ -74,7 +62,7 @@
 
 /* Structured Facts Table */
 .factsTable {
-  margin-top: var(--space-4);
+  margin-top: var(--space-8);
   border-top: 1px solid var(--color-border-hairline);
   display: flex;
   flex-direction: column;
@@ -99,12 +87,11 @@
   font-weight: var(--font-weight-medium);
 }
 
-/* Right Column: Dynamic Photo Stage (Moves naturally with text once unpinned) */
+/* Right Column: Sticky Photo Stage */
 .photoCol {
-  grid-area: photo;
-  position: relative;
-  align-self: start;
-  height: min(580px, 70vh);
+  position: sticky;
+  top: calc(4rem + var(--space-8));
+  height: min(600px, 75vh);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -237,79 +224,4 @@
   color: var(--color-text-secondary);
   line-height: var(--line-height-normal);
   max-width: 18rem;
-}
-
-@media (max-width: 860px) {
-  .section {
-    padding: var(--space-12) var(--space-5);
-  }
-
-  .inner {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .headerBlock {
-    order: 1;
-  }
-
-  .photoCol {
-    order: 2;
-    position: relative;
-    width: min(15rem, 65%);
-    aspect-ratio: 4 / 5;
-    height: auto;
-    margin: var(--space-2) auto var(--space-4);
-  }
-
-  .photoFrame {
-    border-radius: var(--radius-xl);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-  }
-
-  .storyBlock {
-    order: 3;
-  }
-
-  .title {
-    font-size: clamp(1.85rem, 6vw, 2.4rem);
-  }
-
-  .lead {
-    font-size: 1.1rem;
-    margin-bottom: var(--space-2);
-  }
-
-  .paragraph {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .factsTable {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-4) var(--space-5);
-    border-top: 1px solid var(--color-border-hairline);
-    padding-top: var(--space-5);
-    margin-top: var(--space-6);
-  }
-
-  .factRow {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    padding: 0;
-    border-bottom: none;
-  }
-
-  .factLabel {
-    font-size: 11px;
-    letter-spacing: var(--letter-spacing-wide);
-    text-transform: uppercase;
-  }
-
-  .factValue {
-    font-size: var(--font-size-sm);
-  }
 }
