@@ -1,10 +1,10 @@
 {
   "version": "1.0",
-  "generatedAt": "2026-11-07T06:49:46Z",
+  "generatedAt": "2026-11-07T13:44:56Z",
   "github": {
     "username": "rithulraveendran",
     "status": "active",
-    "lastSynced": "2026-11-07T06:49:44Z",
+    "lastSynced": "2026-11-07T13:44:40Z",
     "totalContributions": 222,
     "publicRepos": 12,
     "totalStars": 32,
@@ -5534,7 +5534,7 @@
       "leetcode": {
         "username": "rithulraveendran",
         "status": "active",
-        "lastSynced": "2026-11-07T06:49:44Z",
+        "lastSynced": "2026-11-07T13:44:40Z",
         "totalSolved": 122,
         "easy": 75,
         "easyTotal": 975,
@@ -5562,7 +5562,7 @@
       "codeforces": {
         "handle": "rithulraveendran",
         "status": "active",
-        "lastSynced": "2026-11-07T06:49:45Z",
+        "lastSynced": "2026-11-07T13:44:41Z",
         "rating": 644,
         "maxRating": 644,
         "rank": "newbie",
@@ -5585,7 +5585,7 @@
       },
       "atcoder": {
         "username": "rithulraveendran",
-        "status": "active",
+        "status": "stale",
         "lastSynced": "2026-11-07T06:49:45Z",
         "rating": null,
         "highestRating": null,
@@ -5595,7 +5595,7 @@
       "codechef": {
         "username": "rithulr86",
         "status": "active",
-        "lastSynced": "2026-11-07T06:49:46Z",
+        "lastSynced": "2026-11-07T13:44:56Z",
         "rating": 1021,
         "highestRating": 1021,
         "stars": "1★",
