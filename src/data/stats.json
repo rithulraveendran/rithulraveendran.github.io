@@ -1,10 +1,10 @@
 {
   "version": "1.0",
-  "generatedAt": "2026-11-12T09:18:26Z",
+  "generatedAt": "2026-11-12T17:55:31Z",
   "github": {
     "username": "rithulraveendran",
     "status": "active",
-    "lastSynced": "2026-11-12T09:18:24Z",
+    "lastSynced": "2026-11-12T17:55:29Z",
     "totalContributions": 246,
     "publicRepos": 12,
     "totalStars": 33,
@@ -5524,7 +5524,7 @@
       "leetcode": {
         "username": "rithulraveendran",
         "status": "active",
-        "lastSynced": "2026-11-12T09:18:24Z",
+        "lastSynced": "2026-11-12T17:55:29Z",
         "totalSolved": 125,
         "easy": 75,
         "easyTotal": 975,
@@ -5543,6 +5543,12 @@
             "rating": 1500.0,
             "rank": 0,
             "date": "2026-11-01"
+          },
+          {
+            "contestName": "Biweekly Contest 195",
+            "rating": 1500.0,
+            "rank": 0,
+            "date": "2026-11-07"
           }
         ],
         "badges": [
@@ -5552,7 +5558,7 @@
       "codeforces": {
         "handle": "rithulraveendran",
         "status": "active",
-        "lastSynced": "2026-11-12T09:18:25Z",
+        "lastSynced": "2026-11-12T17:55:30Z",
         "rating": 644,
         "maxRating": 644,
         "rank": "newbie",
@@ -5576,7 +5582,7 @@
       "atcoder": {
         "username": "rithulraveendran",
         "status": "active",
-        "lastSynced": "2026-11-12T09:18:25Z",
+        "lastSynced": "2026-11-12T17:55:30Z",
         "rating": null,
         "highestRating": null,
         "contestsCount": 0,
@@ -5585,7 +5591,7 @@
       "codechef": {
         "username": "rithulr86",
         "status": "active",
-        "lastSynced": "2026-11-12T09:18:26Z",
+        "lastSynced": "2026-11-12T17:55:31Z",
         "rating": 1021,
         "highestRating": 1021,
         "stars": "1★",
